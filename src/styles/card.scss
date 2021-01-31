@@ -1,0 +1,114 @@
+.card {
+  position: relative;
+  width: 268px;
+  height: 130px;
+  padding: 16px 18px;
+  font-size: 12px;
+  line-height: 16px;
+  margin-bottom: 16px;
+  margin-left: 20px;
+
+  mask: url("../img/mask.svg");
+  mask-size: 100% 100%;
+
+  background-color: white;
+  background-size: contain;
+  background-position: bottom right;
+  background-repeat: no-repeat;
+
+  @media screen and (min-width: $md-min) {
+    width: 296px;
+    height: 144px;
+    font-size: 14px;
+  }
+
+  @media screen and (min-width: $lg-min) {
+    width: 347px;
+    padding: 16px 20px;
+    height: 161px;
+    font-size: 16px;
+  }
+
+  &--wine { background-image: url("../img/wine.png"); }
+  &--beer { background-image: url("../img/beer.png"); }
+  &--cake { background-image: url("../img/cake.png"); }
+  &--fruits { background-image: url("../img/fruits.png"); }
+  &--icecream { background-image: url("../img/icecream.png"); }
+  &--meat { background-image: url("../img/meat.png"); }
+  &--shaurma { background-image: url("../img/shaurma.png"); }
+  &--sushi { background-image: url("../img/sushi.png"); }
+
+  &:hover {
+    &::after {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: block;
+      content: "";
+
+      background: url("../img/hover.svg") no-repeat;
+      background-size: 99.9% 99.9%;
+    }
+  }
+
+  &__title {
+    font-family: $font-family-roboto-bold;
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+
+    @media screen and (min-width: $md-min){
+      font-size: 14px;
+    }
+    @media screen and (min-width: $md-min){
+      margin-bottom: 4px;
+      font-size: 16px;
+    }
+  }
+
+  &__description {
+    display: block;
+    font-family: $font-family-roboto-regular;
+    color: $text-black-third;
+    margin-bottom: 30px;
+
+    @media screen and (min-width: $lg-min){
+      margin-bottom: 42px;
+    }
+  }
+
+  &__bonus {
+    @extend %flex-column-start;
+
+    font-family: $font-family-roboto-medium;
+    font-size: 28px;
+    line-height: 24px;
+    color: $color-red;
+    margin-bottom: 2px;
+
+    &::after {
+      content: "";
+      display: block;
+      font-family: $font-family-roboto-regular;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.4em;
+      color: $text-black-third;
+
+      @media screen and (min-width: $md-min) {
+        font-size: 16px;
+      }
+    }
+
+    @media screen and (min-width: $md-min) {
+      font-size: 36px;
+      line-height: 28px;
+    }
+
+    &--sale { &::after {content: "Скидка"} }
+    &--promocode { &::after {content: "Промокод"} }
+    &--coupon { &::after {content: "Купон"} }
+  }
+}

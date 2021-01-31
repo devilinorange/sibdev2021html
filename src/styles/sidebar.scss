@@ -1,0 +1,151 @@
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -180px;
+  background: $secondary-background-color;
+  z-index: $z-index-max;
+
+  transition: left 0.3s ease;
+
+  @media screen and (min-width: $md-min) {
+    left: 0;
+  }
+
+  &__content {
+    width: 192px;
+    height: 100vh;
+    padding: 40px 0 40px;
+    transition: width 0.2s ease-out;
+
+    @media screen and (min-width: $md-min) {
+      width: 104px;
+    }
+
+    @media screen and (min-width: $lg-min) {
+      width: 240px;
+    }
+  }
+
+  &__list {
+    @extend .flex-column-center;
+
+    list-style-type: none;
+    font-family: $font-family-open-sans-semi-bold;
+    color: $text-black-secondary;
+  }
+
+  &__list-icon {
+    display: none;
+    min-height: 24px;
+    min-width: 24px;
+    stroke: black;
+
+    @media screen and (min-width: $md-min) {
+      display: block;
+    }
+  }
+
+  &__list-item {
+    @extend %flex-row-start;
+
+    width: 100%;
+    margin-bottom: 42px;
+    padding: 0 20px;
+
+    &:hover {
+      color: $color-blue;
+      border-left: 2px solid $color-blue;
+      padding-left: 18px;
+
+      .sidebar__list-icon {
+        stroke: $color-blue;
+      }
+
+      @media screen and (min-width: $md-min) {
+        padding-left: 38px;
+      }
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @media screen and (min-width: $md-min) {
+      padding: 0 40px;
+    }
+  }
+
+  &__list-title {
+    @media screen and (min-width: $md-min) {
+      display: none;
+      margin-left: 12px;
+    }
+
+    @media screen and (min-width: $lg-min) {
+      display: block;
+    }
+  }
+}
+
+.sidebar-toggle {
+  @extend %inactive-pointer-form;
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  @media screen and (min-width: $lg-min) {
+    display: none;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 42px;
+
+    &--close {
+      display: none;
+    }
+  }
+
+  &__form {
+    fill: $secondary-background-color;
+  }
+}
+
+// Переопределение стилей после сворачивания сайдбара
+#sidebar-open {
+  &:checked + .sidebar {
+    left: 0;
+
+    .sidebar-toggle {
+      &__icon--open {
+        display: none;
+      }
+
+      &__icon--close {
+        display: block;
+      }
+    }
+
+    & .sidebar {
+      &__list-title {
+        @media screen and (min-width: $md-min) {
+          display: block;
+        }
+      }
+
+      &__content {
+        @media screen and (min-width: $md-min) {
+          width: 246px;
+        }
+
+        @media screen and (min-width: $md-min) {
+          width: 240px;
+        }
+      }
+    }
+
+    & .logo {
+      &__text { display: block; }
+    }
+  }
+}

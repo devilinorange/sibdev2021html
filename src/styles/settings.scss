@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: $main-background-color;
+  display: flex;
+  justify-content: center;
+}
+
+.root {
+  display: flex;
+  width: 100%;
+  padding-left: 12px;
+
+  @media screen and (min-width: $md-min) {
+    padding-left: 104px;
+  }
+
+  @media screen and (min-width: $lg-min) {
+    padding-left: 240px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  padding: 28px 20px 40px 0;
+}
